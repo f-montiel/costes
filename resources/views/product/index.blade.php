@@ -5,13 +5,17 @@
 <h3>Productos</h3>
 <table class="table">
 	<thead>
-		<th>Nombre</th>
+		<tr>
+			<th>Nombre</th>
+		</tr>
 	</thead>
-	@foreach($products as $product)
 	<tbody>
-		<td><a href="#">{{$product->name}}</a></td>
+			@foreach($products as $product)
+				<tr>
+					<td><a href="{{route('product.edit', $product->id)}}">{{$product->name}}</a></td>
+				</tr>
+			@endforeach
 	</tbody>
-	@endforeach
 </table>
 <footer>
 	<a href="{{route('product.create')}}" class="btn btn-primary">Agergar</a>

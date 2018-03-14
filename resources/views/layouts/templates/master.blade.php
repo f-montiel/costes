@@ -20,8 +20,6 @@
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Separated link</a>
             </div>
           </li>
           <li class="nav-item">
@@ -30,8 +28,12 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Disabled</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link float-right" href="#">Login</a>
+          </li>
         </ul>
         </div>
+
         @yield('content')
     </body>
 </html>
