@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Recipe;
 use Illuminate\Http\Request;
 
-use App\Product;
-
-class ProductController extends Controller
+class RecipeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('name')
-                                  ->get();
-        return view('product.index', compact('products'));
+        //
     }
 
     /**
@@ -27,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        //
     }
 
     /**
@@ -38,61 +35,51 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-       Product::create([
-          'name' => $request['name']
-        ]);
-       return redirect('/product');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Recipe $recipe)
     {
-        $product = Product::find($id);
-        return view('product.show', compact('product'));       
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Recipe $recipe)
     {
-        $product = Product::find($id);
-        return view('product.edit', compact('product'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Recipe $recipe)
     {
-        $product = Product::find($id);
-        $product->name = $request->input('name', 'Sin Nombre');
-        $product->save();
-
-        return redirect()->route('product.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Recipe $recipe)
     {
-        Product::destroy($id);
-        return redirect()->route('product.index');
+        //
     }
 }

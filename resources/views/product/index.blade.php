@@ -12,7 +12,12 @@
 	<tbody>
 			@foreach($products as $product)
 				<tr>
-					<td><a href="{{route('product.edit', $product->id)}}">{{$product->name}}</a></td>
+					<td>
+						<a href="{{ route('product.show', $product->id) }}">{{$product->name}}</a>
+					</td>
+					<td>
+						<a href="{{ route('product.edit', $product->id) }}" class="float-right">Editar</a>
+					</td>
 				</tr>
 			@endforeach
 	</tbody>
