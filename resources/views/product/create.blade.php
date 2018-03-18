@@ -1,20 +1,21 @@
 @extends('layouts.templates.master')
 
 @section('content')
-<div class="container">
-	<h3>Agregar Producto</h3>
-	<form action="{{route('product.store')}}" method="POST">
-		{{csrf_field()}}
-		<div class="jumbotron form-group">
-			<label for="name">Nombre</label>
-			<input type="text" name="name" class="form-control">		
-		</div>
-		<div class="form-group">
-			<input type="submit" class="btn btn-info float-right" value="Guardar">
-			<a href="{{route('product.index')}}" class="btn btn-info">Volver</a>
-		</div>
-	</form>
-</div>
+
+<h3>Agregar Producto</h3>
+<form action="{{route('product.store')}}" method="POST">
+	{{csrf_field()}}
+	{{ method_field('POST') }}
+	
+	<div class="jumbotron form-group">
+		<label for="name">Nombre</label>
+		<input type="text" name="name" class="form-control">		
+	</div>
+	<div class="form-group">
+		<input type="submit" class="btn btn-info float-right" value="Guardar">
+		<a href="{{route('product.index')}}" class="btn btn-info">Volver</a>
+	</div>
+</form>
 
 @stop
 

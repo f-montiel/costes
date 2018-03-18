@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;
+use App\Product;
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
@@ -14,7 +15,9 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
+        $recipes = Recipe::orderby('name')
+                           ->get();
+        return view('recipe.index', compact('recipes'));
     }
 
     /**
@@ -24,7 +27,10 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::orderBy('name')
+                                  ->get();
+
+        return view('recipe.create', compact('products'));
     }
 
     /**
@@ -35,7 +41,12 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Recipe::create([
+          'name' => $request['name'],
+          'quantity' => $request['quantity'],
+          'product_id' => $request['product']
+        ]);
+       return redirect('/product');
     }
 
     /**

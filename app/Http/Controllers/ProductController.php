@@ -53,7 +53,9 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        return view('product.show', compact('product'));       
+        $recipes = Product::find($id)->recipes()->orderBy('name')->get();
+
+        return view('product.show', compact(['product', 'recipes']));       
     }
 
     /**

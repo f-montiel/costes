@@ -9,31 +9,32 @@
         <title>Costes</title>
     </head>
     <body>
-        <div>
-        <ul class="nav navbar-fluid">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Inicio</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('product.index')}}">Productos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Disabled</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link float-right" href="#">Login</a>
-          </li>
-        </ul>
+        <nav>
+          <ul class="nav navbar">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Inicio</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('product.index')}}">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('recipe.index') }}">Recetas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link float-right" href="#">Login</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="container-fluid">
+          @yield('content')
         </div>
-
-        @yield('content')
     </body>
 </html>

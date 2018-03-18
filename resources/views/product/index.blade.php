@@ -1,12 +1,13 @@
 @extends('layouts.templates.master')
 
 @section('content')
-<div class="container">
+
 <h3>Productos</h3>
 <table class="table">
 	<thead>
 		<tr>
 			<th>Nombre</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,9 +24,7 @@
 	</tbody>
 </table>
 <footer>
-	<a href="{{route('product.create')}}" class="btn btn-primary">Agergar</a>
+	<a href="{{route('product.create')}}" class="btn btn-primary">Agregar</a>
 </footer>
-</div>
-
 
 @stop

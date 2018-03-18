@@ -14,4 +14,9 @@ class Product extends Model
     protected $fillable = [
         'name'
     ];
+
+     public function recipes()
+    {
+        return $this->hasMany('App\Recipe');
+    }
 }
