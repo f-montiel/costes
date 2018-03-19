@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::resource('product','ProductController');
 
 Route::resource('recipe','RecipeController');
+Route::resource('measurement', 'MeasurementController');
+Route::resource('ingredient', 'IngredientController');

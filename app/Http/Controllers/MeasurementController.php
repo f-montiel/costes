@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Recipe;
-use App\Product;
+use App\Measurement;
 use Illuminate\Http\Request;
 
-class RecipeController extends Controller
+class MeasurementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,9 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::orderby('name')
-                           ->get();
-        return view('recipe.index', compact('recipes'));
+        $measurements = Measurement::get();
+
+        return view('measurement.index', compact('measurements'));
     }
 
     /**
@@ -27,10 +26,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $products = Product::orderBy('name')
-                                  ->get();
-
-        return view('recipe.create', compact('products'));
+        return view('measurement.create');
     }
 
     /**
@@ -41,68 +37,64 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        Recipe::create([
-          'name' => $request['name'],
-          'quantity' => $request['quantity'],
-          'product_id' => $request['product']
+        Measurement::create([
+          'name' => $request['name']
         ]);
-       return redirect()->route('recipe.index');
+       return redirect()->route('measurement.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Recipe  $recipe
+     * @param  \App\Measurement  $measurement
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $recipe = Recipe::find($id);
+        $measurement = Measurement::find($id);
 
-        return view('recipe.show', compact('recipe'));
+        return view('measurement.show', compact('measurement'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Recipe  $recipe
+     * @param  \App\Measurement  $measurement
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $recipe = Recipe::find($id);
+        $measurement = Measurement::find($id);
 
-        return view('recipe.edit', compact('recipe'));
+        return view('measurement.edit', compact('measurement'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Recipe  $recipe
+     * @param  \App\Measurement  $measurement
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $recipe = Recipe::find($id);
+        $measurement = Measurement::find($id);
+        $measurement->name = $request->input('name', 'Sin Nombre');
+        $measurement->save();
 
-        $recipe->name = $request->input('name', 'Sin Nombre');
-        $recipe->quantity = $request->input('quantity', '1');
-        $recipe->save();
-
-        return redirect()->route('recipe.index');
+        return redirect()->route('measurement.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Recipe  $recipe
+     * @param  \App\Measurement  $measurement
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-       Recipe::destroy($id);
-
-       return redirect()->route('recipe.index');
+        Measurement::destroy($id);
+        
+        return redirect()-> route('measurement.index');
     }
 }

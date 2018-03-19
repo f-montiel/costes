@@ -2,10 +2,10 @@
 
 @section('content')
 
-<h3>Agregar Producto</h3>
-<form action="{{route('product.store')}}" method="POST">
+<h3>Agregar Unidad de Medida</h3>
+<form action="{{route('measurement.store')}}" method="POST">
 	{{csrf_field()}}
-	{{ method_field('PUT') }}
+	{{ method_field('POST') }}
 	
 	<div class="jumbotron form-group">
 		<label for="name">Nombre</label>
@@ -13,9 +13,8 @@
 	</div>
 	<div class="form-group">
 		<input type="submit" class="btn btn-info float-right" value="Guardar">
-		<a href="{{route('product.index')}}" class="btn btn-info">Volver</a>
+		<a href="{{route('measurement.index')}}" class="btn btn-info">Volver</a>
 	</div>
 </form>
 
 @stop
-
