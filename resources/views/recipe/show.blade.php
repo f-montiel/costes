@@ -5,7 +5,22 @@
 
 <h3>Ingredientes para {{ $recipe->quantity }} {{ $recipe->name }};</h3>
 <div class="jumbotron">
-	Aca van a ir los ingredientes
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Cantidad</th>
+			</tr>
+		</thead>
+		@foreach($recipe->ingredients as $ingredient)
+		<tbody>
+			<tr>
+				<td>{{$ingredient->name}}</td>
+				<td>{{$ingredient->pivot->quantity . ' ' . $ingredient->measurement->name}}</td>
+			</tr>
+		</tbody>
+		@endforeach
+	</table>
 </div>
 <div>
 	<a href="{{ route('recipe.index') }}" class="btn btn-info float-left">Volver</a>

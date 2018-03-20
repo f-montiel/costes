@@ -12,8 +12,12 @@ class Ingredient extends Model
     	'measurement_id'
     ];
 
- public function measurement()
+	public function measurement()
     {
         return $this->belongsTo('App\Measurement');
+    }
+	public function recipes()
+    {
+        return $this->belongsToMany('App\Recipe')->withPivot('quantity');
     }
 }

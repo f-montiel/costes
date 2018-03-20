@@ -57,8 +57,8 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        $recipe = Recipe::find($id);
-
+        $recipe = Recipe::with('ingredients')->find($id);
+        
         return view('recipe.show', compact('recipe'));
     }
 
