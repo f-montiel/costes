@@ -90,6 +90,8 @@ class IngredientRecipeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        IngredientRecipe::destroy($id);
+        
+        return redirect()-> route('recipe.index');
     }
 }

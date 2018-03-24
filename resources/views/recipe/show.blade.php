@@ -11,6 +11,7 @@
 			<tr>
 				<th>Nombre</th>
 				<th>Cantidad</th>
+				<th></th>
 			</tr>
 		</thead>
 		@foreach($recipe->ingredients as $ingredient)
@@ -18,6 +19,13 @@
 			<tr>
 				<td>{{$ingredient->name}}</td>
 				<td>{{$ingredient->pivot->quantity . ' ' . $ingredient->measurement->name}}</td>
+				<td>
+					<form action="{{ route('ingredientrecipe.destroy', $ingredient->pivot->id) }}" method="POST">
+						{{ CSRF_field() }}
+						{{ method_field('DELETE') }}
+						<input type="submit" value="Quitar" class="btn btn-danger">
+					</form>
+				</td>
 			</tr>
 		</tbody>
 		@endforeach
