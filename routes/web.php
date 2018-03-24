@@ -24,3 +24,5 @@ Route::resource('ingredient', 'IngredientController');
 Route::get('ingredientrecipe/create/{id}', 'IngredientRecipeController@create')->name('ingredientrecipe.create');
 route::post('ingredientrecipe', 'IngredientRecipeController@store')->name('ingredientrecipe.store');
 route::delete('ingredientrecipe/{id}', 'IngredientRecipeController@destroy')->name('ingredientrecipe.destroy');
+
+Route::resource('production', 'ProductionController');

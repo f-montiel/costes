@@ -11,6 +11,8 @@
 			<tr>
 				<th>Nombre</th>
 				<th>Cantidad</th>
+				<th>Precio</th>
+				<th>Costo</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -19,11 +21,13 @@
 			<tr>
 				<td>{{$ingredient->name}}</td>
 				<td>{{$ingredient->pivot->quantity . ' ' . $ingredient->measurement->name}}</td>
+				<td>{{$ingredient->price}}</td>
+				<td>{{ $subtotal[$ingredient->id] }}</td>
 				<td>
 					<form action="{{ route('ingredientrecipe.destroy', $ingredient->pivot->id) }}" method="POST">
 						{{ CSRF_field() }}
 						{{ method_field('DELETE') }}
-						<input type="submit" value="Quitar" class="btn btn-danger">
+						<input type="submit" value="Quitar" class="btn btn-danger float-right">
 					</form>
 				</td>
 			</tr>
@@ -38,7 +42,7 @@
 		{{ CSRF_field() }}
 		{{ method_field('DELETE') }}
 
-		<input type="submit" class="btn btn-danger float-right" value="Borra">
+		<input type="submit" class="btn btn-danger float-right" value="Borrar Receta">
 			
 	</form>
 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Recipe;
 use App\Product;
+use App\services\Costes;
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
@@ -58,8 +59,10 @@ class RecipeController extends Controller
     public function show($id)
     {
         $recipe = Recipe::with('ingredients')->find($id);
+        $subtotal = Costes::subtotal($id);
+        //$total = Costes::total($id);
         
-        return view('recipe.show', compact('recipe'));
+        return view('recipe.show', compact('recipe', 'subtotal'));
     }
 
     /**

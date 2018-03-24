@@ -12,7 +12,7 @@
         <nav>
           <ul class="nav navbar">
             <li class="nav-item">
-              <a class="nav-link" href="#">Inicio</a>
+              <a class="nav-link" href="{{ route('production.index') }}">Produccion</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('measurement.index') }}">Unidades de Medida</a>

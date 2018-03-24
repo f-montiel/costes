@@ -21,4 +21,10 @@ class Recipe extends Model
     {
         return $this->belongsToMany('App\Ingredient')->withPivot('id','quantity');
     }
+
+    public function production()
+    {
+        return $this->hasMany('App\Production');
+    }
+
 }
