@@ -2,9 +2,10 @@
 
 @section('content')
 <h1>Receta: {{ $recipe->name }}</h1>
-
 <h3>Ingredientes para {{ $recipe->quantity }} {{ $recipe->name }};</h3>
-<div class="jumbotron">
+<a href="{{ route('ingredientrecipe.create', $recipe->id) }}" class="btn btn-info">Agregar Ingrediente</a>
+</div>
+<div>
 	<table class="table">
 		<thead>
 			<tr>
@@ -27,10 +28,10 @@
 
 	<form action="{{route('recipe.destroy', $recipe->id)}}" method="POST">
 		{{ CSRF_field() }}
+		{{ method_field('DELETE') }}
 
 		<input type="submit" class="btn btn-danger float-right" value="Borra">
 			
-		{{ method_field('DELETE') }}
 	</form>
 </div>
 

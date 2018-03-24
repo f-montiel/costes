@@ -20,3 +20,5 @@ Route::resource('product','ProductController');
 Route::resource('recipe','RecipeController');
 Route::resource('measurement', 'MeasurementController');
 Route::resource('ingredient', 'IngredientController');
+Route::get('ingredientrecipe/create/{id}', 'IngredientRecipeController@create')->name('ingredientrecipe.create');
+route::post('ingredientrecipe', 'IngredientRecipeController@store')->name('ingredientrecipe.store');

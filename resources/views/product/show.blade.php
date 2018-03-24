@@ -4,10 +4,21 @@
 <h1>Producto: {{ $product->name }}</h1>
 
 <h3>Recetas</h3>
-<div class="jumbotron">
-	@foreach($recipes as $recipe)
-		<h5>{{ $recipe->name }}</h5>
-	@endforeach
+<div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach($recipes as $recipe)
+			<tr>
+				<td>{{ $recipe->name }}</td>
+			</tr>
+			@endforeach
+		</tbody>
+	</table>
 </div>
 <div>
 	<a href="{{ route('product.index') }}" class="btn btn-info float-left">Volver</a>
