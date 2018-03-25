@@ -2,6 +2,7 @@
 namespace App\services;
 
 use App\Recipe;
+use App\Production;
 
 class Costes
 {
@@ -14,6 +15,7 @@ class Costes
 		}
 		return $subtotal;
 	}
+
 	public static function total($id)
 	{
 		$recipe = Recipe::with('ingredients')->find($id);
@@ -23,6 +25,14 @@ class Costes
 		}
 		$total = array_sum($subtotal);
 		return $total;
+	}
+
+	public static function unitCost($id)
+	{
+		$production = Production::find($id);
+		$unitcost = $production->cost / $production->quantity;
+
+		return $unitcost;
 	}
 }
 

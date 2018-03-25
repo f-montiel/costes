@@ -57,9 +57,14 @@ class ProductionController extends Controller
      * @param  \App\Production  $production
      * @return \Illuminate\Http\Response
      */
-    public function show(Production $production)
+    public function show($id)
     {
-        //
+        $production = Production::find($id);
+        $recipe = $production->recipe;
+        $cost = Costes::total($recipe->id);
+        $unitcost = Costes::unitCost($id);
+
+        return view('production.show', compact('production', 'unitcost', 'cost'));        
     }
 
     /**
