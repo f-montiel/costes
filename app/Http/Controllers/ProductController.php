@@ -41,7 +41,7 @@ class ProductController extends Controller
        Product::create([
           'name' => $request['name']
         ]);
-       return redirect('/product');
+       return redirect()->route('product.index');
     }
 
     /**

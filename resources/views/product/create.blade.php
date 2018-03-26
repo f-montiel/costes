@@ -5,7 +5,7 @@
 <h3>Agregar Producto</h3>
 <form action="{{route('product.store')}}" method="POST">
 	{{csrf_field()}}
-	{{ method_field('PUT') }}
+	{{ method_field('POST') }}
 	
 	<div class="jumbotron form-group">
 		<label for="name">Nombre</label>
