@@ -20,5 +20,5 @@ class Ingredient extends Model
     {
         return $this->belongsToMany('App\Recipe')->withPivot('id','quantity');
     }
-
+    
 }

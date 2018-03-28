@@ -7,7 +7,7 @@
 	{{csrf_field()}}
 	{{ method_field('POST') }}
 	
-	<div class="jumbotron form-group">
+	<div class="form-group">
 		<label for="name">Nombre</label>
 		<input type="text" name="name" class="form-control">		
 	</div>

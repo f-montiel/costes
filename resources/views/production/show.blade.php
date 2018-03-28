@@ -1,37 +1,35 @@
 @extends('layouts.templates.master')
 
 @section('content')
-<h1>Partida</h1>
+
+<h3>Partida: {{ $production->name }}</h3>
+<h4>Ingredientes</h4>
 
 <table class="table">
 	<thead>
 		<tr>
 			<th>Nombre</th>
 			<th>Cantidad</th>
-			<th>Costo Total</th>
-			<th>Costo Unitario</th>
+			<th>Precio</th>
+			<th>Costo</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>{{ $production->name }}</td>
-			<td>{{ $production->quantity }}</td>
-			<td>{{ $cost }}</td>
-			<td>{{ $unitcost }}</td>
-		</tr>
+			@foreach($ingredients as $ingredient)
+				<tr>
+					<td>
+						<p>{{ $ingredient->name }}</p>
+					</td>
+					<td>
+						{{ $ingredient->pivot->quantity }}
+					</td>
+					<td>
+						<p>{{ $ingredient->price }}</p>
+					</td>
+					<td>{{ $ingredient->cost }}</td>
+				</tr>
+			@endforeach
 	</tbody>
 </table>
-</div>
-<div>
-	<a href="{{ route('production.index') }}" class="btn btn-info float-left">Volver</a>
-
-	<form action="{{route('production.destroy', $production->id)}}" method="POST">
-		{{ CSRF_field() }}
-
-		<input type="submit" class="btn btn-danger float-right" value="Borra">
-			
-		{{ method_field('DELETE') }}
-	</form>
-</div>
 
 @stop

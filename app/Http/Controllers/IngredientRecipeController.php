@@ -45,7 +45,7 @@ class IngredientRecipeController extends Controller
           'recipe_id' => $request['recipeid'],
           'quantity' => $request['quantity'],
         ]);
-       return redirect()->route('recipe.index');
+       return redirect()->route('recipe.show', $request['recipeid']);
     }
 
     /**

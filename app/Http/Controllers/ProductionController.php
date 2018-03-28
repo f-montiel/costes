@@ -16,9 +16,10 @@ class ProductionController extends Controller
      */
     public function index()
     {
-        $productions = Production::get();
+        $productions = Production::with('recipe')->get();
+        $productionsWithUnitCost = Production::unitCost($productions);
 
-        return view('production.index', compact('productions'));
+        return view('production.index', compact('productionsWithUnitCost'));
     }
 
     /**
@@ -41,14 +42,17 @@ class ProductionController extends Controller
      */
     public function store(Request $request)
     {
+        $recipe = Recipe::with('ingredients')->find($request['recipe']);
         Production::create([
             'name' => $request['name'],
             'recipe_id' => $request['recipe'],
             'quantity' => $request['quantity'],
             'expiration' => $request['expiration'],
-            'cost' => Costes::total($request['recipe'])
+            'cost' => Production::productionCost($recipe),
+            'recipe_ingredients' => $recipe->ingredients->toJson()
         ]);
-       return redirect()->route('production.index');
+
+        return redirect()->route('production.index');
     }
 
     /**
@@ -60,11 +64,10 @@ class ProductionController extends Controller
     public function show($id)
     {
         $production = Production::find($id);
-        $recipe = $production->recipe;
-        $cost = Costes::total($recipe->id);
-        $unitcost = Costes::unitCost($id);
+        $recipeIngredients = json_decode($production->recipe_ingredients);
+        $ingredients = Recipe::find($production->recipe_id)->ingredientsCost($recipeIngredients);
 
-        return view('production.show', compact('production', 'unitcost', 'cost'));        
+        return view('production.show', compact('production', 'ingredients'));
     }
 
     /**

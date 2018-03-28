@@ -12,7 +12,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($recipes as $recipe)
+			@foreach($product->recipes as $recipe)
 			<tr>
 				<td>{{ $recipe->name }}</td>
 			</tr>

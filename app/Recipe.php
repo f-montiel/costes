@@ -12,6 +12,7 @@ class Recipe extends Model
         'product_id'
     ];
 
+
     public function product()
     {
         return $this->belongsTo('App\Product');
@@ -27,4 +28,11 @@ class Recipe extends Model
         return $this->hasMany('App\Production');
     }
 
+    public function ingredientsCost($ingredients)
+    {
+        foreach ($ingredients as $ingredient) {
+            $ingredient->cost = $ingredient->price * $ingredient->pivot->quantity;
+            }
+        return $ingredients;
+    }
 }

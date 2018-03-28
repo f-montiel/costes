@@ -8,29 +8,33 @@
 	<thead>
 		<tr>
 			<th>Partida</th>
-			<th>Cantidad</th>
 			<th>Variedad</th>
+			<th>Cantidad</th>
+			<th>Costo Unitario</th>
+			<th>Costo total</th>
 			<th>Vencimiento</th>
-			<th>Costo</th>
 		</tr>
 	</thead>
 	<tbody>
-			@foreach($productions as $production)
+			@foreach($productionsWithUnitCost as $production)
 				<tr>
 					<td>	
 						<a href="{{ route('production.show', $production->id) }}">{{$production->name}}</a>
 					</td>
 					<td>
-						<p>{{ $production->quantity }}</p>
-					</td>
-					<td>
 						<p>{{ $production->recipe->name }}</p>
 					</td>
 					<td>
-						<p>{{ $production->expiration }}</p>
+						<p>{{ $production->quantity }}</p>
+					</td>
+					<td>
+						<p>{{ $production->unitCost }}</p>
 					</td>
 					<td>
 						<p>{{ $production->cost }}</p>
+					</td>
+					<td>
+						<p>{{ $production->expiration }}</p>
 					</td>
 				</tr>
 			@endforeach

@@ -14,7 +14,8 @@ class IngredientController extends Controller
      */
     public function index()
     {
-        $ingredients = Ingredient::orderBy('name')
+        $ingredients = Ingredient::with('measurement')
+                                 ->orderBy('name')
                                  ->get();
 
         return view('ingredient.index', compact('ingredients'));

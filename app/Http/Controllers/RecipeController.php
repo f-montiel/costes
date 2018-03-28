@@ -16,7 +16,8 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::orderby('name')
+        $recipes = Recipe::with('ingredients')
+                           ->orderby('name')
                            ->get();
         return view('recipe.index', compact('recipes'));
     }
@@ -59,10 +60,9 @@ class RecipeController extends Controller
     public function show($id)
     {
         $recipe = Recipe::with('ingredients')->find($id);
-        $subtotal = Costes::subtotal($id);
-        //$total = Costes::total($id);
+        $ingredients = $recipe->ingredientsCost($recipe->ingredients);
         
-        return view('recipe.show', compact('recipe', 'subtotal'));
+        return view('recipe.show', compact('recipe', 'ingredients'));
     }
 
     /**

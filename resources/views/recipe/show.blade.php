@@ -16,13 +16,13 @@
 				<th></th>
 			</tr>
 		</thead>
-		@foreach($recipe->ingredients as $ingredient)
+		@foreach($ingredients as $ingredient)
 		<tbody>
 			<tr>
 				<td>{{$ingredient->name}}</td>
 				<td>{{$ingredient->pivot->quantity . ' ' . $ingredient->measurement->name}}</td>
 				<td>{{$ingredient->price}}</td>
-				<td>{{ $subtotal[$ingredient->id] }}</td>
+				<td>{{ $ingredient->cost }}</td>
 				<td>
 					<form action="{{ route('ingredientrecipe.destroy', $ingredient->pivot->id) }}" method="POST">
 						{{ CSRF_field() }}

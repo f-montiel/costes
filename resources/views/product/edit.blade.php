@@ -7,11 +7,9 @@
 	{{ CSRF_field() }}
 	{{ method_field('PUT') }}
 	
-	<div class="jumbotron">
-		<div class="form-group">
-			<label for="name">Nombre</label>
-			<input type="text" class="form-control" name="name" value="{{$product->name}}">
-		</div>
+	<div class="form-group">
+		<label for="name">Nombre</label>
+		<input type="text" class="form-control" name="name" value="{{$product->name}}">
 	</div>
 	<div class="form-group">
 		<input type="submit" value="Actualizar" class="btn btn-info float-right">

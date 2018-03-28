@@ -7,7 +7,7 @@
 	{{csrf_field()}}
 	{{ method_field('PUT') }}
 	
-	<div class="jumbotron form-group">
+	<div class="form-group">
 		<label for="name">Nombre</label>
 		<input type="text" name="name" class="form-control" value="{{ $measurement->name }}">		
 	</div>

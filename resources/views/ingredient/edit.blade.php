@@ -7,19 +7,17 @@
 	{{csrf_field()}}
 	{{ method_field('PUT') }}
 
-	<div class="jumbotron">
-		<div class="form-group">
-			<label for="name">Nombre</label>
-			<input type="text" name="name" class="form-control" value="{{ $ingredient->name }}">		
-		</div>
-		<div class="form-group">
-			<label for="price">Precio</label>
-			<input type="number" name="price" class="form-control" value="{{ $ingredient->price }}">		
-		</div>
+	<div class="form-group">
+		<label for="name">Nombre</label>
+		<input type="text" name="name" class="form-control" value="{{ $ingredient->name }}">		
+	</div>
+	<div class="form-group">
+		<label for="price">Precio</label>
+		<input type="number" name="price" class="form-control" value="{{ $ingredient->price }}">		
 	</div>
 	<div class="form-group">
 		<input type="submit" class="btn btn-info float-right" value="Actualizar">
-		<a href="{{route('measurement.index')}}" class="btn btn-info">Volver</a>
+		<a href="{{route('ingredient.index')}}" class="btn btn-info">Volver</a>
 	</div>
 </form>
 @stop

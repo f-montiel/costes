@@ -7,6 +7,7 @@
 	<thead>
 		<tr>
 			<th>Nombre</th>
+			<th>Cantidad</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -15,6 +16,9 @@
 				<tr>
 					<td>
 						<a href="{{ route('recipe.show', $recipe->id) }}">{{$recipe->name}}</a>
+					</td>
+					<td>
+						{{ $recipe->quantity }}
 					</td>
 					<td>
 						<a href="{{ route('recipe.edit', $recipe->id) }}" class="float-right">Editar</a>

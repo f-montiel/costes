@@ -20,6 +20,7 @@ class CreateProductionsTable extends Migration
             $table->decimal('quantity', 8, 2);
             $table->date('expiration');
             $table->decimal('cost', 8, 2);
+            $table->json('recipe_ingredients');
             $table->timestamps();
             $table->foreign('recipe_id')->references('id')->on('recipes');
         });
