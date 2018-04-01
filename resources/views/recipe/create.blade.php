@@ -9,6 +9,7 @@
 	<div class="form-group">
 		<label for="product">Producto</label>
 		<select class="form-control" name="product">
+					<option value=""></option>
 			@foreach($products as $product)
 					<option value="{{ $product->id }}">{{ $product->name }}</option>
 			@endforeach

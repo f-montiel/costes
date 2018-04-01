@@ -3,6 +3,7 @@
 @section('content')
 
 <h3>Productos</h3>
+<a href="{{route('product.create')}}" class="btn btn-primary">Agregar</a>
 <table class="table">
 	<thead>
 		<tr>
@@ -23,8 +24,5 @@
 			@endforeach
 	</tbody>
 </table>
-<footer>
-	<a href="{{route('product.create')}}" class="btn btn-primary">Agregar</a>
-</footer>
 
 @stop

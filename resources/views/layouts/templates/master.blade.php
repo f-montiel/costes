@@ -9,27 +9,20 @@
         <title>Costes</title>
     </head>
     <body>
-        <nav>
-          <ul class="nav navbar">
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('production.index') }}">Produccion</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('measurement.index') }}">Unidades de Medida</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{route('product.index')}}">Productos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('recipe.index') }}">Recetas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link float-right" href="{{ route('ingredient.index') }}">Ingredientes</a>
-            </li>
-          </ul>
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+        <h4 class="my-0 mr-md-auto font-weight-normal">Sistema de Costeo Gastronomico</h4>
+        <nav class="my-2 my-md-0 mr-md-3">
+          <a class="p-2 text-dark" href="{{ route('production.index') }}">Produccion</a>
+          <a class="p-2 text-dark" href="{{ route('product.index') }}">Producto</a>
+          <a class="p-2 text-dark" href="{{ route('measurement.index') }}">Unidad de Medida</a>
+          <a class="p-2 text-dark" href="{{ route('ingredient.index') }}">Ingredientes</a>
+          <a class="p-2 text-dark" href="{{ route('recipe.index') }}">Receta</a>
         </nav>
-        <div class="container-fluid">
+        <!-- <a class="p-2 text-dark" href="#">Nombre de Usuario</a> -->
+      </div>
+          <div class="container-fluid">
           @yield('content')
         </div>
+      <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

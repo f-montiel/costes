@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Measurement;
 use App\Ingredient;
+use App\Http\Requests\IngredientStore;
+use App\Http\Requests\IngredientUpdate;
 use Illuminate\Http\Request;
 
 class IngredientController extends Controller
@@ -40,7 +42,7 @@ class IngredientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IngredientStore $request)
     {
         Ingredient::create([
             'name' => $request['name'],
@@ -85,7 +87,7 @@ class IngredientController extends Controller
      * @param  \App\Ingredient  $ingredient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(IngredientUpdate $request, $id)
     {
         $ingredient = Ingredient::find($id);
         $ingredient->name = $request->input('name', 'Sin Nombre');

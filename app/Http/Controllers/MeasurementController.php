@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Measurement;
 use Illuminate\Http\Request;
+use App\Http\Requests\MeasurementStore;
+use App\Http\Requests\MeasurementUpdate;
 
 class MeasurementController extends Controller
 {
@@ -35,7 +37,7 @@ class MeasurementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MeasurementStore $request)
     {
         Measurement::create([
           'name' => $request['name']
@@ -76,7 +78,7 @@ class MeasurementController extends Controller
      * @param  \App\Measurement  $measurement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MeasurementUpdate $request, $id)
     {
         $measurement = Measurement::find($id);
         $measurement->name = $request->input('name', 'Sin Nombre');

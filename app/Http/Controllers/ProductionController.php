@@ -14,12 +14,30 @@ class ProductionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productions = Production::with('recipe')->get();
-        $productionsWithUnitCost = Production::unitCost($productions);
+        $productions = Production::with('recipe');
 
-        return view('production.index', compact('productionsWithUnitCost'));
+        if (isset($request->recipe_id)) {
+            $productions->where('recipe_id', $request->recipe_id);
+        }
+
+        if (isset($request->dateFrom)) {
+            $productions->where('date', '>=', $request->dateFrom);
+        }
+
+        if (isset($requets->dateTo)) {
+            $productions->where('date', '<=', $request->dateTo);
+        }
+
+        $productionsWithFilter = $productions->get();
+
+        $productionsWithUnitCost = Production::unitCost($productionsWithFilter);
+        
+        $recipeFilterId = $request->recipe_id;
+        $recipes = Recipe::get();
+        
+        return view('production.index', compact('productionsWithUnitCost', 'recipes', 'recipeFilterId'));
     }
 
     /**
@@ -44,6 +62,7 @@ class ProductionController extends Controller
     {
         $recipe = Recipe::with('ingredients')->find($request['recipe']);
         Production::create([
+            'date' => $request['date'],
             'name' => $request['name'],
             'recipe_id' => $request['recipe'],
             'quantity' => $request['quantity'],

@@ -9,7 +9,8 @@
 	{{ method_field('POST') }}
 	<div class="jumbotron form-group">
 		<label for="ingredient">Ingredintes</label>
-		<select class="form-control" name="ingredient">
+		<select class="form-control" name="ingredient" required="ingredient">
+					<option value=""></option>
 			@foreach($ingredients as $ingredient)
 					<option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
 			@endforeach

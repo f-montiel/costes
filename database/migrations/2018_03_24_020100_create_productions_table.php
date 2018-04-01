@@ -15,6 +15,7 @@ class CreateProductionsTable extends Migration
     {
         Schema::create('productions', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('date');
             $table->string('name');
             $table->integer('recipe_id')->unsigned();
             $table->decimal('quantity', 8, 2);

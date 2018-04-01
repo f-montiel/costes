@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Production extends Model
 {
 	protected $fillable = [
+        'date',
         'name',
         'recipe_id',
         'quantity',
@@ -23,7 +24,8 @@ class Production extends Model
     static function productionCost($recipe)
     {
         $ingredientsCost = $recipe->ingredientsCost($recipe->ingredients);
-        $cost = $ingredientsCost->sum('price');
+
+        $cost = $ingredientsCost->sum('cost');
 
         return $cost;
     }
