@@ -15,7 +15,7 @@ class Product extends Model
         'name'
     ];
 
-     public function recipes()
+    public function recipes()
     {
         return $this->hasMany('App\Recipe');
     }

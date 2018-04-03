@@ -9,20 +9,21 @@
         <title>Costes</title>
     </head>
     <body>
+      <div class="container-fluid">
       <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-        <h4 class="my-0 mr-md-auto font-weight-normal">Sistema de Costeo Gastronomico</h4>
+        <h3 class="my-0 mr-md-auto font-weight-normal">Sistema de Costeo Gastronomico</h3>
         <nav class="my-2 my-md-0 mr-md-3">
           <a class="p-2 text-dark" href="{{ route('production.index') }}">Produccion</a>
           <a class="p-2 text-dark" href="{{ route('product.index') }}">Producto</a>
           <a class="p-2 text-dark" href="{{ route('measurement.index') }}">Unidad de Medida</a>
           <a class="p-2 text-dark" href="{{ route('ingredient.index') }}">Ingredientes</a>
           <a class="p-2 text-dark" href="{{ route('recipe.index') }}">Receta</a>
+          <a class="p-2 text-dark" href="{{ route('movement.index') }}">Stock</a>
         </nav>
         <!-- <a class="p-2 text-dark" href="#">Nombre de Usuario</a> -->
       </div>
-          <div class="container-fluid">
           @yield('content')
-        </div>
+      </div>
       <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

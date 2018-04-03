@@ -6,6 +6,8 @@ use App\Production;
 use App\Recipe;
 use App\services\Costes;
 use Illuminate\Http\Request;
+use \Carbon\Carbon;
+use App\Movement;
 
 class ProductionController extends Controller
 {
@@ -18,26 +20,27 @@ class ProductionController extends Controller
     {
         $productions = Production::with('recipe');
 
-        if (isset($request->recipe_id)) {
-            $productions->where('recipe_id', $request->recipe_id);
+        if (isset($request->recipeId)) {
+            $productions = $productions->where('recipe_id', $request->recipeId);
         }
 
         if (isset($request->dateFrom)) {
-            $productions->where('date', '>=', $request->dateFrom);
+            $productions = $productions->where('date', '>=', $request->dateFrom);
         }
 
-        if (isset($requets->dateTo)) {
-            $productions->where('date', '<=', $request->dateTo);
+        if (isset($request->dateTo)) {
+           $productions = $productions->where('date', '<=',$request->dateTo);
         }
 
-        $productionsWithFilter = $productions->get();
+        $productionsWithFilter = $productions->paginate(10);
 
         $productionsWithUnitCost = Production::unitCost($productionsWithFilter);
-        
-        $recipeFilterId = $request->recipe_id;
+        $dateTo = $request->dateTo;
+        $dateFrom = $request->dateFrom;
+        $recipeId = $request->recipeId;
         $recipes = Recipe::get();
         
-        return view('production.index', compact('productionsWithUnitCost', 'recipes', 'recipeFilterId'));
+        return view('production.index', compact('productionsWithUnitCost', 'recipes', 'recipeId', 'dateFrom', 'dateTo'));
     }
 
     /**
@@ -69,6 +72,14 @@ class ProductionController extends Controller
             'expiration' => $request['expiration'],
             'cost' => Production::productionCost($recipe),
             'recipe_ingredients' => $recipe->ingredients->toJson()
+        ]);
+
+        $production_id = Production::select('id')->get();
+        
+        Movement::create([
+            'date' => $request['date'],
+            'production_id' => $production_id->last()->id,
+            'quantity' => $request['quantity']
         ]);
 
         return redirect()->route('production.index');

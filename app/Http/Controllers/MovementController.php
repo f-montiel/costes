@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\IngredientRecipe;
-use App\Recipe;
-use App\Ingredient;
+use App\Movement;
 
-class IngredientRecipeController extends Controller
+class MovementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,9 @@ class IngredientRecipeController extends Controller
      */
     public function index()
     {
-        //
+        $movements = Movement::with('production')->get();
+
+        return view('movement.index', compact('movements'));
     }
 
     /**
@@ -24,12 +24,9 @@ class IngredientRecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $recipe = Recipe::find($id);
-        $ingredients = Ingredient::get();
-        
-        return view('recipe.ingredient', compact('recipe', 'ingredients'));
+        //
     }
 
     /**
@@ -40,12 +37,7 @@ class IngredientRecipeController extends Controller
      */
     public function store(Request $request)
     {
-        IngredientRecipe::create([
-          'ingredient_id' => $request['ingredient'],
-          'recipe_id' => $request['recipeid'],
-          'quantity' => $request['quantity'],
-        ]);
-       return redirect()->route('recipe.show', $request['recipeid']);
+        //
     }
 
     /**
@@ -90,8 +82,6 @@ class IngredientRecipeController extends Controller
      */
     public function destroy($id)
     {
-        IngredientRecipe::destroy($id);
-        
-        return redirect()-> route('recipe.index');
+        //
     }
 }

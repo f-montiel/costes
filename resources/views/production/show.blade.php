@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>Partida: {{ $production->name }}</h3>
+<h1>Partida: {{ $production->name }}</h1>
 <h4>Ingredientes</h4>
 
 <table class="table">
@@ -24,9 +24,9 @@
 						{{ $ingredient->pivot->quantity }}
 					</td>
 					<td>
-						<p>{{ $ingredient->price }}</p>
+						<p>${{ $ingredient->price }}</p>
 					</td>
-					<td>{{ $ingredient->cost }}</td>
+					<td>${{ $ingredient->cost }}</td>
 				</tr>
 			@endforeach
 	</tbody>

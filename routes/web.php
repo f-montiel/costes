@@ -26,3 +26,4 @@ route::post('ingredientrecipe', 'IngredientRecipeController@store')->name('ingre
 route::delete('ingredientrecipe/{id}', 'IngredientRecipeController@destroy')->name('ingredientrecipe.destroy');
 
 Route::resource('production', 'ProductionController');
+Route::get('movement', 'MovementController@index')->name('movement.index');

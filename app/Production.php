@@ -16,10 +16,20 @@ class Production extends Model
         'recipe_ingredients'
     ];
 
+    protected $dates = [
+        'date',
+        'expiration'
+    ];
+
     public function recipe()
     {
         return $this->belongsTo('App\Recipe');
     }
+
+    public function movement()
+    {
+        return $this->hasMany('App\Movement');
+    } 
 
     static function productionCost($recipe)
     {

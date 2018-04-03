@@ -1,27 +1,35 @@
 @extends('layouts.templates.master')
 
 @section('content')
+<h1>Partidas</h1>
+
+<a href="{{route('production.create')}}" class="btn btn-primary">Agregar</a>
+
 
 <h3>Filtros</h3>
 
 <form action="{{ route('production.index') }}" method="GET">
 	<div class="row">
 		<label for="recipe_id" class="col-3">Recetas</label>
-		<label for="dateFrom" class="col-3">Fecha Desde</label>
-		<label for="dateTo" class="col-3">Fecha Hasta</label>
+		<label for="dateFrom" class="col-3">Fecha de Produccion Desde</label>
+		<label for="dateTo" class="col-3">Fecha de Produccion Hasta</label>
 	</div>
 	<div class="form-group">
 		<div class="row container-fluid">
-			<select class="form-control col-3" name="recipe_id">
+			<select class="form-control col-3" name="recipeId">
 				<option value="">Todas</option>
 				@foreach($recipes as $recipe)
-					<option value="{{ $recipe->id }}" <?php if ($recipeFilterId == $recipe->id): ?>
+					<option value="{{ $recipe->id }}" <?php if ($recipeId == $recipe->id): ?>
 						selected
 					<?php endif ?>>{{ $recipe->name }}</option>
 				@endforeach
 			</select>
-			<input type="date" name="dateFrom" class="form-control col-3">
-			<input type="date" name="dateTo" class="form-control col-3">
+			<input type="date" name="dateFrom" class="form-control col-3" <?php if (isset($dateFrom)): ?>
+				value = "{{ $dateFrom }}"				
+			<?php endif ?>>
+			<input type="date" name="dateTo" class="form-control col-3" <?php if (isset($dateTo)): ?>
+				value = "{{ $dateTo }}"				
+			<?php endif ?>>
 		</div>
 		<div class="row container-fluid">
 			<input type="submit" class="btn btn-primary float-right" value="Filtrar">
@@ -29,11 +37,6 @@
 	</div>
 </form>
 
-<div class="row container-fluid">
-<h3 class="col-11">Partidas</h3>
-
-	<a href="{{route('production.create')}}" class="btn btn-primary col-1">Agregar</a>
-</div>
 
 <table class="table">
 	<thead>
@@ -54,7 +57,7 @@
 						<a href="{{ route('production.show', $production->id) }}">{{$production->name}}</a>
 					</td>
 					<td>
-						<p>{{ $production->date }}</p>
+						<p>{{ $production->date->format('d/m/Y') }}</p>
 					</td>
 					<td>
 						<p>{{ $production->recipe->name }}</p>
@@ -63,17 +66,19 @@
 						<p>{{ $production->quantity }}</p>
 					</td>
 					<td>
-						<p>{{ $production->unitCost }}</p>
+						<p>${{ round($production->unitCost, 2) }}</p>
 					</td>
 					<td>
-						<p>{{ $production->cost }}</p>
+						<p>${{ round($production->cost, 2) }}</p>
 					</td>
 					<td>
-						<p>{{ $production->expiration }}</p>
+						<p>{{ $production->expiration->format('d/m/Y') }}</p>
 					</td>
 				</tr>
 			@endforeach
 	</tbody>
 </table>
+
+{{ $productionsWithUnitCost->appends(['recipeId' => $recipeId, 'dateFrom' => $dateFrom, 'dateTo' => $dateTo])->links() }}
 
 @stop
