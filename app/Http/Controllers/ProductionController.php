@@ -64,7 +64,7 @@ class ProductionController extends Controller
     public function store(Request $request)
     {
         $recipe = Recipe::with('ingredients')->find($request['recipe']);
-        Production::create([
+        $production = Production::create([
             'date' => $request['date'],
             'name' => $request['name'],
             'recipe_id' => $request['recipe'],
@@ -73,12 +73,10 @@ class ProductionController extends Controller
             'cost' => Production::productionCost($recipe),
             'recipe_ingredients' => $recipe->ingredients->toJson()
         ]);
-
-        $production_id = Production::select('id')->get();
-        
+     
         Movement::create([
             'date' => $request['date'],
-            'production_id' => $production_id->last()->id,
+            'production_id' => $production->id,
             'quantity' => $request['quantity']
         ]);
 

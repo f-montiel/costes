@@ -48,4 +48,9 @@ class Production extends Model
 
         return $productions;
     }
+
+    public function sales()
+    {
+        return $this->belongsToMany('App\Sale')->withPivot('id','quantity');
+    }
 }

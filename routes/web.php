@@ -27,3 +27,7 @@ route::delete('ingredientrecipe/{id}', 'IngredientRecipeController@destroy')->na
 
 Route::resource('production', 'ProductionController');
 Route::get('movement', 'MovementController@index')->name('movement.index');
+
+Route::resource('client', 'ClientController');
+
+Route::resource('sale', 'SaleController');
