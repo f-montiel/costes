@@ -19,6 +19,7 @@
           <a class="p-2 text-dark" href="{{ route('ingredient.index') }}">Ingredientes</a>
           <a class="p-2 text-dark" href="{{ route('recipe.index') }}">Receta</a>
           <a class="p-2 text-dark" href="{{ route('client.index') }}">clientes</a>
+          <a class="p-2 text-dark" href="{{ route('sale.index') }}">ventas</a>
           <a class="p-2 text-dark" href="{{ route('movement.index') }}">Stock</a>
         </nav>
         <!-- <a class="p-2 text-dark" href="#">Nombre de Usuario</a> -->

@@ -21,9 +21,9 @@
 		</select>
 	</div>
 	<div class="form-group">
-		@foreach($productions as $productions->id => $production)
-		<label for="production">{{ $production->recipe->name . ' ' . $production->name . ' ' . $production->expiration->format('d/m/Y') }}</label>
-		<input type="number" name="productions['production_id' => {{$production->id}}]['quantity']" value="{{ $production->quantity }}" class="form-control">
+		@foreach($productions as $production)
+		<label for="production">{{ $production->recipe->name . ' ' . $production->name . ' ' . $production->expiration->format('d/m/Y') . 'Cantidad disponible: ' . $production->quantity }}</label>
+		<input type="number" name="quantity[{{$production->id}}]" value="{{ $production->quantity }}" class="form-control">
 		@endforeach
 	</div>
 	<div class="form-group">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Production;
 use App\sale;
 use App\Client;
+use App\Movement;
 
 class SaleController extends Controller
 {
@@ -16,7 +17,9 @@ class SaleController extends Controller
      */
     public function index()
     {
-        //
+        $sales = Sale::with('client')->get();
+
+        return view('sale.index', compact('sales'));    
     }
 
     /**
@@ -40,7 +43,27 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
+        $quantities = $request->input('quantity');
 
+        $sale = Sale::create([
+            'date' => $request->date,
+            'client_id' => $request->client_id
+        ]);
+
+        foreach ($quantities as $productionId => $quantity) {
+            $sale->productions()->attach($productionId, ['quantity' => $quantity]);
+        }
+
+        foreach ($quantities as $productionId => $quantity) {
+              Movement::create([
+                'date' => $request->date,
+                'production_id' => $productionId,
+                'quantity' => -$quantity,
+                'movement_type_id => 2'
+              ]);
+          }
+
+          return redirect()->route('sale.index');
     }
 
     /**

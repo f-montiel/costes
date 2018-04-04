@@ -77,7 +77,8 @@ class ProductionController extends Controller
         Movement::create([
             'date' => $request['date'],
             'production_id' => $production->id,
-            'quantity' => $request['quantity']
+            'quantity' => $request['quantity'],
+            'movement_type_id' => 1
         ]);
 
         return redirect()->route('production.index');

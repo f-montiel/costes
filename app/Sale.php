@@ -7,13 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 class Sale extends Model
 {
     protected $fillable = [
-    	'production_id',
-    	'sale_id',
-    	'quantity'
+    	'client_id',
+    	'date'
     ];
 
     public function productions()
     {
     	return $this->belongsToMany('App\Production')->withPivot('id','quantity');
+    }
+
+    public function client()
+    {
+    	return $this->belongsTo('App\Client');
+    }
+
+    public function movements()
+    {
+        return $this->hasMany('App\sale');
     }
 }
