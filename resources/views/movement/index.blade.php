@@ -25,7 +25,7 @@
 						<p>{{ $movement->production->recipe->name }}</p>
 					</td>
 					<td>
-						<p>{{ $movement->production->quantity }}</p>
+						<p>{{ $movement->quantity }}</p>
 					</td>
 					<td>
 						<p>{{ $movement->production->expiration->format('d/m/Y') }}</p>
