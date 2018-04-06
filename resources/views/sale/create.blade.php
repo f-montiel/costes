@@ -19,13 +19,38 @@
 			<option value="{{ $client->id }}">{{ $client->name }}</option>
 			@endforeach
 		</select>
-	</div>
-	<div class="form-group">
-		@foreach($productions as $production)
-		<label for="production">{{ $production->recipe->name . ' ' . $production->name . ' ' . $production->expiration->format('d/m/Y') . 'Cantidad disponible: ' . $production->quantity }}</label>
-		<input type="number" name="quantity[{{$production->id}}]" value="{{ $production->quantity }}" class="form-control">
-		@endforeach
-	</div>
+	<table class="table">
+	<thead>
+		<tr>
+			<th>Receta</th>
+			<th>Partida</th>
+			<th>Vencimiento</th>
+			<th>Saldo</th>
+			<th>Venta</th>
+		</tr>
+	</thead>
+	<tbody>
+			@foreach($productions as $production)
+				<tr>
+					<td>	
+						<p>{{ $production->recipe->name }}</p>
+					</td>
+					<td>	
+						<p>{{ $production->name }}</p>
+					</td>
+					<td>	
+						<p>{{ $production->expiration->format('d/m/Y') }}</p>
+					</td>
+					<td>	
+						<p>{{ $production->movement->sum('quantity') }}</p>
+					</td>
+					<td>
+						<input type="number" name="quantity[{{$production->id}}]" class="form-control">
+					</td>
+				</tr>
+			@endforeach
+	</tbody>
+</table>
 	<div class="form-group">
 		<input type="submit" value="Guardar" class="btn btn-primary">
 	</div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movement;
+use App\Production;
 
 class MovementController extends Controller
 {
@@ -14,9 +15,9 @@ class MovementController extends Controller
      */
     public function index()
     {
-        $movements = Movement::with('production')->get();
+        $productions = Production::with('movement')->get();
 
-        return view('movement.index', compact('movements'));
+        return view('movement.index', compact('productions'));
     }
 
     /**

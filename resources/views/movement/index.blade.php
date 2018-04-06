@@ -16,19 +16,19 @@
 		</tr>
 	</thead>
 	<tbody>
-			@foreach($movements as $movement)
+			@foreach($productions as $production)
 				<tr>
 					<td>
-						<p>{{ $movement->production->name }}</p>
+						<p>{{ $production->name }}</p>
 					</td>
 					<td>
-						<p>{{ $movement->production->recipe->name }}</p>
+						<p>{{ $production->recipe->name }}</p>
 					</td>
 					<td>
-						<p>{{ $movement->quantity }}</p>
+						<p>{{ $production->movement->sum('quantity') }}</p>
 					</td>
 					<td>
-						<p>{{ $movement->production->expiration->format('d/m/Y') }}</p>
+						<p>{{$production->expiration->format('d/m/Y') }}</p>
 					</td>
 				</tr>
 			@endforeach

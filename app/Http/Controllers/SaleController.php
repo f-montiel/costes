@@ -29,7 +29,7 @@ class SaleController extends Controller
      */
     public function create()
     {
-        $productions = Production::with('recipe')->get();
+        $productions = Production::with('recipe', 'movement')->get();
         $clients = Client::get();
 
         return view('sale.create', compact('productions', 'clients'));
