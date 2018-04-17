@@ -12,7 +12,7 @@
 */
 	Route::get('/', function () {
 	    return view('index');
-	})->middleware('auth');
+	});
 
 	Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 	Route::resource('product','ProductController')->middleware('auth');

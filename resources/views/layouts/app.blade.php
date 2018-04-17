@@ -17,7 +17,7 @@
     <div id="app">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     <h3>Sistema de Costeo Gastronomico</h3>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
