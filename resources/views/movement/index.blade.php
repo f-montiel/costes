@@ -1,9 +1,9 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 
 @section('content')
 
-<h2>Stock Por Partida</h2>
+<h1>Stock Por Partida</h1>
 
 </table>
 <table class="table">

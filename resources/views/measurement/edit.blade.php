@@ -1,8 +1,8 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h3>Editar Unidad de Medida</h3>
+<h1>Editar Unidad de Medida</h1>
 
 @foreach($errors->all() as $error)
 <div class="alert alert-danger">
@@ -24,8 +24,8 @@
 		<input type="text" name="name" class="form-control" value="{{ $measurement->name }}" required="name">		
 	</div>
 	<div class="form-group">
-		<input type="submit" class="btn btn-info float-right" value="Actualizar">
-		<a href="{{route('measurement.index')}}" class="btn btn-info">Volver</a>
+		<input type="submit" class="btn btn-primary float-right" value="Actualizar">
+		<a href="{{route('measurement.index')}}" class="btn btn-primary">Volver</a>
 	</div>
 </form>
 

@@ -1,9 +1,15 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h3>Productos</h3>
-<a href="{{route('product.create')}}" class="btn btn-primary">Agregar</a>
+<h1>Productos</h1>
+
+<div class="form-group">
+	<a href="{{route('product.create')}}" class="btn btn-primary">Agregar</a>
+</div>
+
+<h3>Listado de Productos</h3>
+
 <table class="table">
 	<thead>
 		<tr>

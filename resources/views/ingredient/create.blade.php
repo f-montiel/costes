@@ -1,8 +1,8 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h3>Agregar Ingrediente</h3>
+<h1>Agregar Ingrediente</h1>
 @foreach($errors->all() as $error)
 <div class="alert alert-danger">
   	<ul>
@@ -33,8 +33,8 @@
 		</select>
 		</div>
 		<div class="form-group">
-		<input type="submit" class="btn btn-info float-right" value="Guardar">
-		<a href="{{route('ingredient.index')}}" class="btn btn-info">Volver</a>
+		<input type="submit" class="btn btn-primary float-right" value="Guardar">
+		<a href="{{route('ingredient.index')}}" class="btn btn-primary">Volver</a>
 	</div>
 </form>
 

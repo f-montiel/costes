@@ -1,10 +1,14 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h3>Ingredintes</h3>
+<h1>Ingredientes</h1>
 
-<a href="{{route('ingredient.create')}}" class="btn btn-primary">Agregar</a>
+<div class="form-group">
+	<a href="{{route('ingredient.create')}}" class="btn btn-primary">Agregar</a>
+</div>
+
+<h3>Listado de Ingredientes</h3>
 
 <table class="table">
 	<thead>
@@ -22,10 +26,10 @@
 						<a href="{{ route('ingredient.show', $ingredient->id) }}">{{$ingredient->name}}</a>
 					</td>
 					<td>
-						<p>{{$ingredient->measurement->name}}</p>
+						{{$ingredient->measurement->name}}
 					</td>
 					<td>
-						<p>{{$ingredient->price}}</p>
+						{{$ingredient->price}}
 					</td>
 					<td>
 						<a href="{{ route('ingredient.edit', $ingredient->id) }}" class="float-right">Editar</a>

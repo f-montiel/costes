@@ -1,8 +1,8 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h3>Editar Ingrediente</h3>
+<h1>Editar Ingrediente</h1>
 @foreach($errors->all() as $error)
 <div class="alert alert-danger">
   	<ul>
@@ -25,8 +25,8 @@
 		<input type="number" name="price" class="form-control" value="{{ $ingredient->price }}" required="price">		
 	</div>
 	<div class="form-group">
-		<input type="submit" class="btn btn-info float-right" value="Actualizar">
-		<a href="{{route('ingredient.index')}}" class="btn btn-info">Volver</a>
+		<input type="submit" class="btn btn-primary float-right" value="Actualizar">
+		<a href="{{route('ingredient.index')}}" class="btn btn-primary">Volver</a>
 	</div>
 </form>
 @stop

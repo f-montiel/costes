@@ -1,8 +1,15 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h3>Recetas</h3>
+<h1>Recetas</h1>
+
+<div class="form-group">
+	<a href="{{route('recipe.create')}}" class="btn btn-primary">Agregar</a>
+</div>
+
+<h3>Listado de Recetas</h3>
+
 <table class="table">
 	<thead>
 		<tr>
@@ -27,8 +34,7 @@
 			@endforeach
 	</tbody>
 </table>
-<footer>
-	<a href="{{route('recipe.create')}}" class="btn btn-primary">Agregar</a>
-</footer>
+
+
 
 @stop

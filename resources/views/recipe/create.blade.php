@@ -1,8 +1,8 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h3>Agregar Receta</h3>
+<h1>Agregar Receta</h1>
 <form action="{{route('recipe.store')}}" method="POST">
 	{{csrf_field()}}
 	{{ method_field('POST') }}
@@ -24,8 +24,8 @@
 		<input type="number" name="quantity" class="form-control">
 	</div>
 	<div class="form-group">
-		<input type="submit" class="btn btn-info float-right" value="Guardar">
-		<a href="{{route('recipe.index')}}" class="btn btn-info">Volver</a>
+		<input type="submit" class="btn btn-primary float-right" value="Guardar">
+		<a href="{{route('recipe.index')}}" class="btn btn-primary">Volver</a>
 	</div>
 </form>
 

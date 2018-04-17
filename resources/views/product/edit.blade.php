@@ -1,8 +1,8 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h3>Editar Producto</h3>
+<h1>Editar Producto</h1>
 
 @foreach($errors->all() as $error)
 <div class="alert alert-danger">
@@ -23,8 +23,8 @@
 		<input type="text" class="form-control" name="name" value="{{$product->name}}" required="name">
 	</div>
 	<div class="form-group">
-		<input type="submit" value="Actualizar" class="btn btn-info float-right">
-		<a href="{{ route('product.index') }}" class="btn btn-info float-left">Volver</a>
+		<input type="submit" value="Actualizar" class="btn btn-primary float-right">
+		<a href="{{ route('product.index') }}" class="btn btn-primary float-left">Volver</a>
 	</div>
 </form>
 

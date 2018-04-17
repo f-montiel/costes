@@ -10,24 +10,26 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+	Route::get('/', function () {
+	    return view('index');
+	})->middleware('auth');
 
-Route::get('/', function () {
-    return view('index');
-});
+	Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+	Route::resource('product','ProductController')->middleware('auth');
 
-Route::resource('product','ProductController');
+	Route::resource('recipe','RecipeController')->middleware('auth');
+	Route::resource('measurement', 'MeasurementController')->middleware('auth');
+	Route::resource('ingredient', 'IngredientController')->middleware('auth');
 
-Route::resource('recipe','RecipeController');
-Route::resource('measurement', 'MeasurementController');
-Route::resource('ingredient', 'IngredientController');
+	Route::get('ingredientrecipe/create/{id}', 'IngredientRecipeController@create')->name('ingredientrecipe.create')->middleware('auth');
+	route::post('ingredientrecipe', 'IngredientRecipeController@store')->name('ingredientrecipe.store')->middleware('auth');
+	route::delete('ingredientrecipe/{id}', 'IngredientRecipeController@destroy')->name('ingredientrecipe.destroy')->middleware('auth');
 
-Route::get('ingredientrecipe/create/{id}', 'IngredientRecipeController@create')->name('ingredientrecipe.create');
-route::post('ingredientrecipe', 'IngredientRecipeController@store')->name('ingredientrecipe.store');
-route::delete('ingredientrecipe/{id}', 'IngredientRecipeController@destroy')->name('ingredientrecipe.destroy');
+	Route::resource('production', 'ProductionController')->middleware('auth');
+	Route::get('movement', 'MovementController@index')->name('movement.index')->middleware('auth');
 
-Route::resource('production', 'ProductionController');
-Route::get('movement', 'MovementController@index')->name('movement.index');
+	Route::resource('client', 'ClientController')->middleware('auth');
 
-Route::resource('client', 'ClientController');
+	Route::resource('sale', 'SaleController')->middleware('auth');
+	Auth::routes();
 
-Route::resource('sale', 'SaleController');

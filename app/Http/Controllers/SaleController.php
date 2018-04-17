@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Production;
-use App\sale;
+use App\Sale;
 use App\Client;
 use App\Movement;
 

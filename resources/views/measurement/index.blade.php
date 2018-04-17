@@ -1,8 +1,15 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h3>Unidades de Medida</h3>
+<h1>Unidades de Medida</h1>
+
+<div class="form-group">
+	<a href="{{route('measurement.create')}}" class="btn btn-primary">Agregar</a>
+</div>
+
+<h3>Listado de Unidades de Medida</h3>
+
 <table class="table">
 	<thead>
 		<tr>
@@ -23,8 +30,6 @@
 			@endforeach
 	</tbody>
 </table>
-<footer>
-	<a href="{{route('measurement.create')}}" class="btn btn-primary">Agregar</a>
-</footer>
+
 
 @stop

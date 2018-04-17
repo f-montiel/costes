@@ -1,10 +1,11 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 <h1>Partidas</h1>
 
-<a href="{{route('production.create')}}" class="btn btn-primary">Agregar</a>
-
+<div class="form-group">
+	<a href="{{route('production.create')}}" class="btn btn-primary">Agregar</a>
+</div>
 
 <h3>Filtros</h3>
 
@@ -31,12 +32,13 @@
 				value = "{{ $dateTo }}"				
 			<?php endif ?>>
 		</div>
-		<div class="row container-fluid">
-			<input type="submit" class="btn btn-primary float-right" value="Filtrar">
-		</div>
+	</div>
+	<div class="form-group">
+		<input type="submit" class="btn btn-primary" value="Filtrar">
 	</div>
 </form>
 
+<h3>Listado de Partidas</h3>
 
 <table class="table">
 	<thead>

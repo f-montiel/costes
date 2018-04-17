@@ -1,9 +1,10 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h1>Partida: {{ $production->name }}</h1>
-<h4>Ingredientes</h4>
+<h1>{{ $production->name }}</h1>
+<h2>Cantidad producida: {{ $production->quantity }}</h2>
+<h3>Detalle</h3>
 
 <table class="table">
 	<thead>
@@ -31,5 +32,7 @@
 			@endforeach
 	</tbody>
 </table>
+
+<a href="{{ route('production.index') }}" class="btn btn-primary float-left">Volver</a>
 
 @stop

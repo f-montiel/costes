@@ -1,11 +1,13 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
+
 <h1>Clientes</h1>
-
-<a href="{{ route('client.create') }}" class="btn btn-primary">Agregar</a>
-
+<div class="form-group">
+	<a href="{{ route('client.create') }}" class="btn btn-primary">Agregar</a>
+</div>
+<h3>Listado de Clientes</h3>
 <table class="table">
 	<thead>
 		<tr>

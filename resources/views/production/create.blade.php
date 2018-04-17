@@ -1,8 +1,8 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h3>Produccion</h3>
+<h1>Agregar Partida</h1>
 <form action="{{route('production.store')}}" method="POST">
 	{{csrf_field()}}
 	<div class="form-group">
@@ -31,8 +31,8 @@
 		<input type="date" name="expiration" class="form-control">
 	</div>
 	<div class="form-group">
-		<input type="submit" class="btn btn-info float-right" value="Guardar">
-		<a href="{{route('production.index')}}" class="btn btn-info">Volver</a>
+		<input type="submit" class="btn btn-primary float-right" value="Guardar">
+		<a href="{{route('production.index')}}" class="btn btn-primary">Volver</a>
 	</div>
 </form>
 

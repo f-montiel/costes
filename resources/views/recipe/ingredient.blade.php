@@ -1,13 +1,13 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h1>{{ $recipe->name }}</h1>
+<h1>Agregar Ingrediente</h1>
 
 <form action="{{route('ingredientrecipe.store')}}" method="POST">
 	{{csrf_field()}}
 	{{ method_field('POST') }}
-	<div class="jumbotron form-group">
+	<div class="form-group">
 		<label for="ingredient">Ingredintes</label>
 		<select class="form-control" name="ingredient" required="ingredient">
 					<option value=""></option>
@@ -20,8 +20,8 @@
 		<input type="hidden" name="recipeid" value="{{ $recipe->id }}">
 	</div>
 	<div class="form-group">
-		<input type="submit" class="btn btn-info float-right" value="Guardar">
-		<a href="{{route('recipe.show', $recipe->id)}}" class="btn btn-info">Volver</a>
+		<input type="submit" class="btn btn-primary float-right" value="Guardar">
+		<a href="{{route('recipe.show', $recipe->id)}}" class="btn btn-primary">Volver</a>
 	</div>
 </form>
 

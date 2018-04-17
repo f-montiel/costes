@@ -1,8 +1,8 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h3>Editar Receta</h3>
+<h1>Editar Receta</h1>
 <form action="{{route('recipe.update', $recipe->id)}}" method="POST">
 	{{ CSRF_field() }}
 	{{ method_field('PUT') }}
@@ -16,8 +16,8 @@
 		<input type="number" class="form-control" name="quantity" value="{{$recipe->quantity}}">
 	</div>
 	<div class="form-group">
-		<input type="submit" value="Actualizar" class="btn btn-info float-right">
-		<a href="{{ route('recipe.index') }}" class="btn btn-info float-left">Volver</a>
+		<input type="submit" value="Actualizar" class="btn btn-primary float-right">
+		<a href="{{ route('recipe.index') }}" class="btn btn-primary float-left">Volver</a>
 	</div>
 </form>
 

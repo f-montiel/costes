@@ -1,10 +1,14 @@
-@extends('layouts.templates.master')
+@extends('layouts.app')
 
 @section('content')
 
-<h1>Listado de Ventas</h1>
+<h1>Ventas</h1>
 
-<a href="{{route('sale.create')}}" class="btn btn-primary">Agregar</a>
+<div class="form-group">
+	<a href="{{route('sale.create')}}" class="btn btn-primary">Agregar</a>
+</div>
+
+<h3>Listado de ventas</h3>
 
 <table class="table">
 	<thead>
