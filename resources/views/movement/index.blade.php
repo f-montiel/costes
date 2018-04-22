@@ -17,6 +17,7 @@
 	</thead>
 	<tbody>
 			@foreach($productions as $production)
+			<?php if ($production->movement->sum('quantity') > 0): ?>
 				<tr>
 					<td>
 						<p>{{ $production->name }}</p>
@@ -28,9 +29,10 @@
 						<p>{{ $production->movement->sum('quantity') }}</p>
 					</td>
 					<td>
-						<p>{{$production->expiration->format('d/m/Y') }}</p>
+						<p>{{ $production->expiration->format('d/m/Y') }}</p>
 					</td>
 				</tr>
+			<?php endif ?>
 			@endforeach
 	</tbody>
 </table>	

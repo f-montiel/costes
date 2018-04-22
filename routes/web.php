@@ -31,5 +31,6 @@
 	Route::resource('client', 'ClientController')->middleware('auth');
 
 	Route::resource('sale', 'SaleController')->middleware('auth');
+	
 	Auth::routes();
 

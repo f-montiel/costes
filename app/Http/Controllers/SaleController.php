@@ -7,6 +7,7 @@ use App\Production;
 use App\Sale;
 use App\Client;
 use App\Movement;
+use App\Http\Requests\SaleStore;
 
 class SaleController extends Controller
 {
@@ -41,27 +42,33 @@ class SaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaleStore $request)
     {
+        $movements = Movement::get();
         $quantities = $request->input('quantity');
 
+        foreach ($quantities as $productionId => $quantity) {
+            if ($quantity > $movements->where('production_id', $productionId)->sum('quantity')) {
+                return back();//falta agregar el mensaje.
+            }
+        }        
+        dd($suma);
         $sale = Sale::create([
             'date' => $request->date,
             'client_id' => $request->client_id
         ]);
 
         foreach ($quantities as $productionId => $quantity) {
-            $sale->productions()->attach($productionId, ['quantity' => $quantity]);
+            if (isset($quantity)) {
+                $sale->productions()->attach($productionId, ['quantity' => $quantity]);
+                  Movement::create([
+                    'date' => $request->date,
+                    'production_id' => $productionId,
+                    'quantity' => -$quantity,
+                    'movement_type_id => 2'
+                  ]);
+            }
         }
-
-        foreach ($quantities as $productionId => $quantity) {
-              Movement::create([
-                'date' => $request->date,
-                'production_id' => $productionId,
-                'quantity' => -$quantity,
-                'movement_type_id => 2'
-              ]);
-          }
 
           return redirect()->route('sale.index');
     }
