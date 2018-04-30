@@ -22,15 +22,15 @@
 	@foreach($ingredients as $ingredient)
 	<tbody>
 		<tr>
-			<td>{{$ingredient->name}}</td>
-			<td>{{$ingredient->pivot->quantity . ' ' . $ingredient->measurement->name}}</td>
-			<td>{{$ingredient->price}}</td>
+			<td>{{ $ingredient->name }}</td>
+			<td>{{ $ingredient->pivot->quantity . ' ' . $ingredient->measurement->name }}</td>
+			<td>{{ $ingredient->price }}</td>
 			<td>{{ $ingredient->cost }}</td>
 			<td>
 				<form action="{{ route('ingredientrecipe.destroy', $ingredient->pivot->id) }}" method="POST">
 					{{ CSRF_field() }}
 					{{ method_field('DELETE') }}
-					<input type="submit" value="Quitar" class="btn btn-danger float-right">
+					<input type="submit" value="Quitar" class="btn btn-link float-right">
 				</form>
 			</td>
 		</tr>

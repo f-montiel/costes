@@ -6,6 +6,8 @@ use App\Recipe;
 use App\Product;
 use App\services\Costes;
 use Illuminate\Http\Request;
+use App\Http\Requests\RecipeStore;
+use App\Http\Requests\RecipeUpdate;
 
 class RecipeController extends Controller
 {
@@ -41,7 +43,7 @@ class RecipeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RecipeStore $request)
     {
         Recipe::create([
           'name' => $request['name'],
@@ -85,7 +87,7 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RecipeUpdate $request, $id)
     {
         $recipe = Recipe::find($id);
 

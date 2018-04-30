@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\IngredientRecipe;
 use App\Recipe;
 use App\Ingredient;
+use App\Http\Requests\IngredientRecipeStore;
 
 class IngredientRecipeController extends Controller
 {
@@ -38,7 +39,7 @@ class IngredientRecipeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IngredientRecipeStore $request)
     {
         IngredientRecipe::create([
           'ingredient_id' => $request['ingredient'],

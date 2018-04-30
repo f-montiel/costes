@@ -8,6 +8,7 @@ use App\services\Costes;
 use Illuminate\Http\Request;
 use \Carbon\Carbon;
 use App\Movement;
+use App\Http\Requests\ProductionStore;
 
 class ProductionController extends Controller
 {
@@ -61,7 +62,7 @@ class ProductionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductionStore $request)
     {
         $recipe = Recipe::with('ingredients')->find($request['recipe']);
         $production = Production::create([

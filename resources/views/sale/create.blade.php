@@ -3,15 +3,7 @@
 @section('content')
 
 <h1>Agregar venta</h1>
-@foreach($errors->all() as $error)
-<div class="alert alert-danger">
-  	<ul>
-  		<li>
-  		{{ $error }}
-  		</li>
-  	</ul>	
-</div>
-@endforeach
+
 <form action="{{ route('sale.store') }}" method="POST">
 	{{csrf_field()}}
 
@@ -33,7 +25,7 @@
 			<th>Receta</th>
 			<th>Partida</th>
 			<th>Vencimiento</th>
-			<th>Saldo</th>
+			<th>Stock</th>
 			<th>Venta</th>
 		</tr>
 	</thead>

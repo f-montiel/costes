@@ -48,8 +48,11 @@ class SaleController extends Controller
         $quantities = $request->input('quantity');
 
         foreach ($quantities as $productionId => $quantity) {
+            if (!isset($quantity)) {
+                return back();
+            }
             if ($quantity > $movements->where('production_id', $productionId)->sum('quantity')) {
-                return back();//falta agregar el mensaje.
+                return back();
             }
         }        
         dd($suma);

@@ -4,6 +4,16 @@
 
 <h1>Agregar Ingrediente</h1>
 
+@foreach($errors->all() as $error)
+<div class="alert alert-danger">
+  	<ul>
+  		<li>
+  		{{ $error }}
+  		</li>
+  	</ul>	
+</div>
+@endforeach
+
 <form action="{{route('ingredientrecipe.store')}}" method="POST">
 	{{csrf_field()}}
 	{{ method_field('POST') }}
@@ -16,7 +26,7 @@
 			@endforeach
 		</select>
 		<label for="quantity">Cantidad</label>
-		<input type="number" name="quantity" class="form-control">
+		<input type="number" name="quantity" class="form-control" required="quantity">
 		<input type="hidden" name="recipeid" value="{{ $recipe->id }}">
 	</div>
 	<div class="form-group">
