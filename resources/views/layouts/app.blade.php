@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Sistema de Costeo Gastronomico</title>
+    <title>Sistema de Costeo</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <h3>Sistema de Costeo Gastronomico</h3>
+                    <h3>Sistema de Costeo</h3>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -115,5 +115,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>

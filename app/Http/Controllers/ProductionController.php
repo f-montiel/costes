@@ -19,7 +19,7 @@ class ProductionController extends Controller
      */
     public function index(Request $request)
     {
-        $productions = Production::with('recipe');
+        $productions = Production::with('recipe')->orderBy('date');
 
         if (isset($request->recipeId)) {
             $productions = $productions->where('recipe_id', $request->recipeId);

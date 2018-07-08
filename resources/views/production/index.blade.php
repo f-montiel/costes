@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Partidas</h1>
+<h1>Lote Produccion</h1>
 
 <div class="form-group">
 	<a href="{{route('production.create')}}" class="btn btn-primary">Agregar</a>

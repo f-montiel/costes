@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Recipe;
 use App\Product;
+use App\Ingredient;
 use App\services\Costes;
 use Illuminate\Http\Request;
 use App\Http\Requests\RecipeStore;
@@ -33,8 +34,9 @@ class RecipeController extends Controller
     {
         $products = Product::orderBy('name')
                                   ->get();
+        $ingredients = Ingredient::get();
 
-        return view('recipe.create', compact('products'));
+        return view('recipe.create', compact('products', 'ingredients'));
     }
 
     /**
@@ -45,6 +47,7 @@ class RecipeController extends Controller
      */
     public function store(RecipeStore $request)
     {
+        dd($request);
         Recipe::create([
           'name' => $request['name'],
           'quantity' => $request['quantity'],

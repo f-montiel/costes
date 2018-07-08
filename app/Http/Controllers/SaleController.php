@@ -55,7 +55,7 @@ class SaleController extends Controller
                 return back();
             }
         }        
-        dd($suma);
+
         $sale = Sale::create([
             'date' => $request->date,
             'client_id' => $request->client_id
@@ -68,7 +68,7 @@ class SaleController extends Controller
                     'date' => $request->date,
                     'production_id' => $productionId,
                     'quantity' => -$quantity,
-                    'movement_type_id => 2'
+                    'movement_type_id' => 2
                   ]);
             }
         }
