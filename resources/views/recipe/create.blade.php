@@ -47,7 +47,9 @@
 							<label for="quantity">Cantidad</label>
 							<input type="number" class="form-control" id="quantity" onchange="btn()">
 						</div>
-						<p class="form-control btn btn-info disabled" id="btn" onclick="btnValidation()" >Agregar Ingrediente</p>
+						<button 
+							class="form-control btn btn-info" id="button" onclick="btnValidation()" disabled="">Agregar Ingrediente
+						</button>
 					</div>
 	        	</div>
 				<table id="table" class="table" hidden>
@@ -86,15 +88,16 @@ function btn() {
     	btnDisable();
     }
 }
+
 function btnEnable() {
-	let btn = document.getElementById("btn");
-	btn.setAttribute("class", "form-control btn btn-info");
+	let btn = document.getElementById("button");
+	btn.removeAttribute("disabled");
 
 }
 
 function btnDisable() {
-	let btn = document.getElementById("btn");
-	btn.setAttribute("class", "form-control btn btn-info disabled")
+	let btn = document.getElementById("button");
+	btn.setAttribute("disabled", "true");
 }
 
 function clean() {
@@ -105,9 +108,12 @@ function clean() {
 }
 
 function btnValidation() {
+	document.getElementById("button").addEventListener("click", function(event){
+    event.preventDefault()
+	});
 	btn();
-	let btnAttribute = document.getElementById("btn").getAttribute("class");
-	if (btnAttribute == "form-control btn btn-info") {
+	let btnAttribute = document.getElementById("button").hasAttribute("disabled");
+	if (!btnAttribute) {
 		table();
 	}
 
