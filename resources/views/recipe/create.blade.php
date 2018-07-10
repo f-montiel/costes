@@ -73,6 +73,10 @@
 	</form>	
 </div>
 
+@endsection
+
+@section('extrajs')
+
 <script>
 
 let ingredients = [];

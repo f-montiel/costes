@@ -31,6 +31,8 @@
 	Route::resource('client', 'ClientController')->middleware('auth');
 
 	Route::resource('sale', 'SaleController')->middleware('auth');
+
+	Route::get('highchart', 'SaleController@highchart')->middleware('auth');
 	
 	Auth::routes();
 

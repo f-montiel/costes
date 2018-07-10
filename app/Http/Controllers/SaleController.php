@@ -120,4 +120,15 @@ class SaleController extends Controller
     {
         //
     }
+
+    public function highchart()
+    {
+        $movements = Movement::with(['production.recipe'])
+                            ->where('movement_type_id', "=" , 2)
+                            ->get()
+                            ->toJson();
+
+        return response($movements);
+
+    }
 }
