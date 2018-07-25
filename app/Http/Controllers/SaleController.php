@@ -238,13 +238,4 @@ class SaleController extends Controller
 
         return response($reportData);
     }
-
-    private function getUniqueRecipesFromSales($sales)
-    {
-        $productions = $sales->flatMap(function($item, $key) {
-            return $item->productions;
-        });
-
-        return $productions->pluck('recipe')->unique();
-    }
 }
