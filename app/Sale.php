@@ -13,7 +13,7 @@ class Sale extends Model
 
     public function productions()
     {
-    	return $this->belongsToMany('App\Production')->withPivot('id','quantity');
+    	return $this->belongsToMany('App\Production')->withPivot('quantity')->withTimestamps();
     }
 
     public function client()
@@ -21,8 +21,8 @@ class Sale extends Model
     	return $this->belongsTo('App\Client');
     }
 
-    public function movements()
-    {
-        return $this->hasMany('App\sale');
-    }
+    // public function movements()
+    // {
+    //     return $this->hasMany('App\sale');
+    // }
 }

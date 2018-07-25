@@ -51,6 +51,6 @@ class Production extends Model
 
     public function sales()
     {
-        return $this->belongsToMany('App\Sale')->withPivot('id','quantity');
+        return $this->belongsToMany('App\Sale')->withPivot('quantity')->withTimestamps();
     }
 }
