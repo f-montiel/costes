@@ -47,7 +47,7 @@ class RecipeController extends Controller
      */
     public function store(RecipeStore $request)
     {
-        dd($request);
+        // dd($request);
         Recipe::create([
           'name' => $request['name'],
           'quantity' => $request['quantity'],

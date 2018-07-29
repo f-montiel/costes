@@ -23,30 +23,66 @@
 @section('extrajs')
 
 <script>
-    (function (){
+    //codigo viejo
+    // (function (){
         
-        let recipes = [];
+    //     let recipes = [];
         
-        $.get("/highchart", function(response){
+    //     $.get("/highchart", function(response){
         
-        let sales = JSON.parse(response);
+    //     let sales = JSON.parse(response);
 
-        for (var i = sales.length - 1; i >= 0; i--) {
-            // recipes.push({
-            //     recipe: movements[i].production.recipe.name,
-            //     quantity: movements[i].production.quantity});
+    //     for (var i = sales.length - 1; i >= 0; i--) {
+    //         // recipes.push({
+    //         //     recipe: movements[i].production.recipe.name,
+    //         //     quantity: movements[i].production.quantity});
+    //     }
+        
+    //     console.log(sales);
+    //     });
+
+
+//(function (){ Esto es lo mismo que $(function(). Es como que estabas haciendo 2 veces on document ready
+
+$(function () {
+    $.get("/highchart", function(response){
+        let categories = [];
+        let series = [];
+
+        // Primero creo el array vacio, para que si da error el request no quede undefined la variable recipes, 
+        // y el chart lo siga tomando como un array vacio. Sino puede explotar todo y queda blanca la pantalla
+        if(response.recipes != undefined) {
+            categories = response.recipes
         }
-        
-        console.log(sales);
-        });
 
 
-        $(function () { 
-            var myChart = Highcharts.chart('container', {
-                chart: {
-                    type: 'bar'
-                },
+        if(response.series != undefined) {
+            series = response.series
+        }
+
+        buildChart(categories, series)
+    });
+
+    function buildChart(categories, series) {
+        let myChart = Highcharts.chart('container', {
+            chart: {
+                type: 'bar'
+            },
+            // Saca el comentario de abajo para que sea una barra por receta, de n colores
+            // plotOptions: {
+            //     series: {
+            //         stacking: 'normal'
+            //     }
+            // },
+            title: {
+                text: 'Ventas por receta'
+            },
+            xAxis: {
+                categories: categories
+            },
+            yAxis: {
                 title: {
+<<<<<<< HEAD
                     text: 'Ventas por Cliente'
                 },
                 xAxis: {
@@ -65,8 +101,17 @@
                     data: [5, 7, 3]
                 }]
             });
+=======
+                    text: 'Unidades'
+                }
+            },
+            series: series
+>>>>>>> c959df9bb27714aea1ce0758bc2baabf5fb8ad65
         });
-    })();
+    }
+
+});
+
 </script>
 
 @stop

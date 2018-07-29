@@ -22,8 +22,8 @@ class Movement extends Model
         return $this->belongsTo('App\Production');
     } 
 
-    public function sale()
-    {
-        return $this->belongsTo('App\Movement');
-    }
+    // public function sale()
+    // {
+    //     return $this->belongsTo('App\Movement');
+    // }
 }
