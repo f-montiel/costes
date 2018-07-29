@@ -29,14 +29,15 @@
         
         $.get("/highchart", function(response){
         
-        let movements = JSON.parse(response);
+        let sales = JSON.parse(response);
 
-        for (var i = movements.length - 1; i >= 0; i--) {
-            recipes.push({
-                recipe: movements[i].production.recipe.name,
-                quantity: movements[i].production.quantity});
+        for (var i = sales.length - 1; i >= 0; i--) {
+            // recipes.push({
+            //     recipe: movements[i].production.recipe.name,
+            //     quantity: movements[i].production.quantity});
         }
-        console.log(recipes);
+        
+        console.log(sales);
         });
 
 
@@ -46,14 +47,14 @@
                     type: 'bar'
                 },
                 title: {
-                    text: 'Fruit Consumption'
+                    text: 'Ventas por Cliente'
                 },
                 xAxis: {
                     categories: ['Apples', 'Bananas', 'Oranges']
                 },
                 yAxis: {
                     title: {
-                        text: 'Fruit eaten'
+                        text: 'Cantidad Vendida'
                     }
                 },
                 series: [{

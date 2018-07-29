@@ -123,12 +123,23 @@ class SaleController extends Controller
 
     public function highchart()
     {
-        $movements = Movement::with(['production.recipe'])
-                            ->where('movement_type_id', "=" , 2)
-                            ->get()
-                            ->toJson();
+        $sales = Sale::with(['productions.recipe'])
+                            ->get();
+        
+        foreach ($sales as $sale) {
+            $saleProductions = $sale->productions;
+            $clients = array($sale->client->name);
 
-        return response($movements);
+            foreach ($saleProductions as $saleProduction) {
+                $quantity = $saleProduction->pivot->quantity;
+                $recipe = $saleProduction->recipe->name;
+                $object[] = array("recipe"=>$recipe, "quantity"=>$quantity);
+            }
+        }
 
+        $salesGrouped = $sales->groupBy('client_id');
+        dd($salesGrouped);
+
+        return response($object);
     }
 }
